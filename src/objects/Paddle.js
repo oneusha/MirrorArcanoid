@@ -33,11 +33,11 @@ export default class Paddle {
 	control() {
 		window.addEventListener('keydown', (e) => {
 			if (e.keyCode === 39) {
-				this.move(this.isTop ? 1 : -1);
+				this.move(this.isTop ? -1 : 1);
 			}
 
 			if (e.keyCode === 37) {
-				this.move(this.isTop ? -1 : 1);
+				this.move(this.isTop ? 1 : -1);
 			}
 		});
 	}

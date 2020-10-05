@@ -26,13 +26,18 @@ export default class Ball {
 			this.dx *= -1;
 		}
 
-		// if (this.checkWalls(this.y + this.dy + this.r, 'height') || this.checkPaddle(this.x + this.dx, this.y + this.dy)) {
-		// 	this.dy *= -1;
-		// }
+		if (this.checkWalls(this.y + this.dy + this.r, 'height') || this.checkPaddle(this.x + this.dx, this.y + this.dy)) {
+			this.dy *= -1;
+		}
 
 		if (this.checkPaddle(this.x + this.dx, this.y + this.dy)) {
 			this.dy *= -1;
-		}
+        }
+        
+        if (this.checkBricks()) {
+            this.dx *= -1;
+            this.dy *= -1;
+        }
 
 		this.x += this.dx;
 		this.y += this.dy;
@@ -45,9 +50,23 @@ export default class Ball {
 	checkPaddle(x, y) {
 		return (y >= game.paddle.y && y <= game.paddle.y + game.paddle.height && x >= game.paddle.x && x <= game.paddle.x + game.paddle.width) ||
 			   (y >= game.paddle2.y && y <= game.paddle2.y + game.paddle2.height && x >= game.paddle2.x && x <= game.paddle2.x + game.paddle2.width);
-	}
+    }
+    
+    checkBricks() {
+		return game.bricks.some((brick) => {
+            const ballPosX = this.x + this.r + this.dx;
+            const ballPosY = this.y + this.r + this.dy;
+
+            const intersectX = brick.x < ballPosX && brick.x + brick.width > ballPosX;
+            const intersectY = brick.y < ballPosY && brick.y + brick.height > ballPosY;
+
+			if (intersectX && intersectY) {
+                return true;
+            };
+		});
+    }
 
 	checkBoard(y) {
-		return y > game.mainBoard.halfHeight;
+		return y >= game.mainBoard.halfHeight;
 	}
 }
