@@ -1,19 +1,24 @@
 {
-  "name": "game",
+  "name": "mirror-arcanoid",
   "version": "1.0.0",
-  "description": "simple game",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Zhelnov Ivan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oneusha/MirrorArcanoid.git"
+  },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oneusha/MirrorArcanoid/issues"
+  },
+  "homepage": "https://github.com/oneusha/MirrorArcanoid#readme",
   "devDependencies": {
-    "babel-core": "^6.3.13",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-runtime": "^6.3.13",
-    "jade-loader": "^0.8.0",
-    "webpack": "^1.12.9"
+    "@babel/core": "^7.11.6",
+    "babel-preset-es2017": "^6.24.1"
   }
 }
